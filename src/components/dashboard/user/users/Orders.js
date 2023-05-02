@@ -13,7 +13,7 @@ const Orders = () => {
   const fetchAPI = () => {
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/orders/sender/${userDetails.username}`
+        `https://letsprint-backend.onrender.com/orders/sender/${userDetails.username}`
       )
       .then((res) => {
         setTimeout(() => {

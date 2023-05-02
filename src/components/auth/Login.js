@@ -27,7 +27,7 @@ const Login = () => {
     setAlert({ status: true, type: "primary", msg: "Processing..." });
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`
+        `https://letsprint-backend.onrender.com/users/username/${userDetails.username}`
       )
       .then((res) => {
         if (res.data.username !== userDetails.username) {

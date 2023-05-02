@@ -23,13 +23,13 @@ const Proceed = () => {
 
   const orderHandler =  () => {
     setTimeout(() => {
-      axios.get(`https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`).then(userResponse => {
+      axios.get(`https://letsprint-backend.onrender.com/users/username/${userDetails.username}`).then(userResponse => {
         if (userResponse.data.wallet >= amount) {
           console.log("Printing Order Details : ")
           console.log(orderDetails)
-          axios.post(`https://letsprint-spring.herokuapp.com/orders`, orderDetails).then(orderResponse => {
+          axios.post(`https://letsprint-backend.onrender.com/orders`, orderDetails).then(orderResponse => {
             if (orderResponse.data.status === true) {
-              axios.put(`https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}/wallet/${userResponse.data.wallet - amount}`).then(walletResponse => {
+              axios.put(`https://letsprint-backend.onrender.com/users/username/${userDetails.username}/wallet/${userResponse.data.wallet - amount}`).then(walletResponse => {
                 if (walletResponse.data.status === true) {
                   setOrderDetails(prevState => {
                     return { ...prevState, confirmedId: orderResponse.data.id }
@@ -39,7 +39,7 @@ const Proceed = () => {
 
                   axios
                   .get(
-                    `https://letsprint-spring.herokuapp.com/users/username/${orderDetails.reciever}`
+                    `https://letsprint-backend.onrender.com/users/username/${orderDetails.reciever}`
                   ).then(res=>{
                     const templateParameters = {
                       username: orderDetails.sender,
@@ -70,7 +70,7 @@ const Proceed = () => {
                   }, 1500)
                 }
                 else {
-                  axios.delete(`https://letsprint-spring.herokuapp.com/orders/${orderResponse.data.id}`)
+                  axios.delete(`https://letsprint-backend.onrender.com/orders/${orderResponse.data.id}`)
                   setAlert({ status: true, type: "danger", msg: `Order Could Not be Placed (Wallet API Failed)` })
                   setConfirmed(false)
                 }

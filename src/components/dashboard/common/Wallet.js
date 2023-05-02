@@ -22,21 +22,21 @@ const Wallet = () => {
   const fetchAPI = () => {
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`
+        `https://letsprint-backend.onrender.com/users/username/${userDetails.username}`
       )
       .then((res) => {
         setBalance(res.data.wallet);
       });
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/wallets/sender/${userDetails.username}`
+        `https://letsprint-backend.onrender.com/wallets/sender/${userDetails.username}`
       )
       .then((res) => {
         setMoneySent(res.data);
       });
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/wallets/reciever/${userDetails.username}`
+        `https://letsprint-backend.onrender.com/wallets/reciever/${userDetails.username}`
       )
       .then((res) => {
         setMoneyRecieved(res.data);
@@ -63,7 +63,7 @@ const Wallet = () => {
       };
       console.log(data);
       axios
-        .post(`https://letsprint-spring.herokuapp.com/wallets`, data)
+        .post(`https://letsprint-backend.onrender.com/wallets`, data)
         .then(() => {
           console.log("I am inside Then");
           setAlert({
@@ -87,12 +87,12 @@ const Wallet = () => {
     setTimeout(() => {
       axios
         .get(
-          `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`
+          `https://letsprint-backend.onrender.com/users/username/${userDetails.username}`
         )
         .then((res) => {
           axios
             .put(
-              `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username
+              `https://letsprint-backend.onrender.com/users/username/${userDetails.username
               }/wallet/${parseFloat(res.data.wallet) + parseFloat(loadMoney)}`
             )
             .then((walletResponse) => {
@@ -150,19 +150,19 @@ const Wallet = () => {
         if (sendMoneyDetails.amount > 0) {
           axios
             .get(
-              `https://letsprint-spring.herokuapp.com/users/username/${sendMoneyDetails.username}`
+              `https://letsprint-backend.onrender.com/users/username/${sendMoneyDetails.username}`
             )
             .then((newUserResponse) => {
               if (newUserResponse.data.username === sendMoneyDetails.username) {
                 axios
                   .get(
-                    `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`
+                    `https://letsprint-backend.onrender.com/users/username/${userDetails.username}`
                   )
                   .then((userResponse) => {
                     if (userResponse.data.wallet >= sendMoneyDetails.amount) {
                       axios
                         .put(
-                          `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username
+                          `https://letsprint-backend.onrender.com/users/username/${userDetails.username
                           }/wallet/${parseInt(userResponse.data.wallet) -
                           parseInt(sendMoneyDetails.amount)
                           }`
@@ -171,7 +171,7 @@ const Wallet = () => {
                           if (walletResponse.data.status === true) {
                             axios
                               .put(
-                                `https://letsprint-spring.herokuapp.com/users/username/${sendMoneyDetails.username
+                                `https://letsprint-backend.onrender.com/users/username/${sendMoneyDetails.username
                                 }/wallet/${parseInt(newUserResponse.data.wallet) +
                                 parseInt(sendMoneyDetails.amount)
                                 }`
@@ -258,7 +258,7 @@ const Wallet = () => {
       };
       console.log(data);
       axios
-        .post(`https://letsprint-spring.herokuapp.com/wallets`, data)
+        .post(`https://letsprint-backend.onrender.com/wallets`, data)
         .then(() => {
           console.log("I am inside Then");
           setOnlineMoneyAlert({
@@ -282,12 +282,12 @@ const Wallet = () => {
     setTimeout(() => {
       axios
         .get(
-          `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`
+          `https://letsprint-backend.onrender.com/users/username/${userDetails.username}`
         )
         .then((res) => {
           axios
             .put(
-              `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username
+              `https://letsprint-backend.onrender.com/users/username/${userDetails.username
               }/wallet/${parseFloat(res.data.wallet) + parseFloat(amount)}`
             )
             .then((walletResponse) => {
@@ -330,7 +330,7 @@ const Wallet = () => {
         setOnlineMoneyAlert({ status: true, type: "warning", msg: "Amount Cannot be Empty" });    
       }
       else {
-        axios.post(`https://letsprint-spring.herokuapp.com/wallets/createorder`, onlineMoney).then(res => {
+        axios.post(`https://letsprint-backend.onrender.com/wallets/createorder`, onlineMoney).then(res => {
           if (res.data.status === "created") {
             var options = {
               "key": "rzp_test_H5PcFQfQ2QkpKw", 

@@ -79,7 +79,7 @@ const UploadPdf = () => {
           setTimeout(() => {
             const formData = new FormData();
             formData.append("file", selectedFile);
-            axios.post(`https://letsprint-spring.herokuapp.com/files`, formData).then(res => {
+            axios.post(`https://letsprint-backend.onrender.com/files`, formData).then(res => {
               if (res.data.status === true) {
                 setFileDetails({ ...fileDetails, uploaded: true, uploading: false })
                 setAlert({ status: true, type: "success", msg: `PDF Uploaded Successfully!` })

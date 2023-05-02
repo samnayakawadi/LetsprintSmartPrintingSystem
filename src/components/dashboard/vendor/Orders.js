@@ -15,7 +15,7 @@ const Orders = () => {
   const fetchAPI = () => {
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/orders/reciever/${userDetails.username}`
+        `https://letsprint-backend.onrender.com/orders/reciever/${userDetails.username}`
       )
       .then((res) => {
         setTimeout(() => {
@@ -55,19 +55,19 @@ const Orders = () => {
     setTimeout(() => {
       axios
         .get(
-          `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username}`
+          `https://letsprint-backend.onrender.com/users/username/${userDetails.username}`
         )
         .then((userResponse) => {
           axios
             .put(
-              `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username
+              `https://letsprint-backend.onrender.com/users/username/${userDetails.username
               }/wallet/${userResponse.data.wallet + amount}`
             )
             .then((walletResponse) => {
               if (walletResponse.data.status === true) {
                 axios
                   .put(
-                    `https://letsprint-spring.herokuapp.com/orders/${id}/status/Completed`
+                    `https://letsprint-backend.onrender.com/orders/${id}/status/Completed`
                   )
                   .then((res) => {
                     if (res.data.status === true) {
@@ -81,7 +81,7 @@ const Orders = () => {
 
                       axios
                         .get(
-                          `https://letsprint-spring.herokuapp.com/users/username/${sender}`
+                          `https://letsprint-backend.onrender.com/users/username/${sender}`
                         ).then(res=>{
                           const templateParameters = {
                             username: sender,
@@ -109,7 +109,7 @@ const Orders = () => {
 
                     } else {
                       axios.put(
-                        `https://letsprint-spring.herokuapp.com/users/username/${userDetails.username
+                        `https://letsprint-backend.onrender.com/users/username/${userDetails.username
                         }/wallet/${userResponse.data.wallet - amount}`
                       );
                       setAlert({

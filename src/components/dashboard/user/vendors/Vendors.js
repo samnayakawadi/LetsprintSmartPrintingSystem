@@ -9,7 +9,7 @@ const Vendors = () => {
 
   const loadVendors = () => {
     setIsLoading(true);
-    axios.get(`https://letsprint-spring.herokuapp.com/users/type/Vendor`).then((res) => {
+    axios.get(`https://letsprint-backend.onrender.com/users/type/Vendor`).then((res) => {
       setTimeout(() => {
         setAllVendors(res.data)
         setIsLoading(false);

@@ -15,13 +15,13 @@ const AdminDashboard = () => {
 
     const fetchAPI = () => {
         setTimeout(() => {
-            axios.get(`https://letsprint-spring.herokuapp.com/users/type/User/all`).then((res) => {
+            axios.get(`https://letsprint-backend.onrender.com/users/type/User/all`).then((res) => {
                 setIsLoading(false)
                 setAllUsers(res.data)
             }).catch(() => {
                 setAlert({ status: true, type: "danger", msg: "Sever Error" })
             });
-            axios.get(`https://letsprint-spring.herokuapp.com/users/type/Vendor/all`).then((res) => {
+            axios.get(`https://letsprint-backend.onrender.com/users/type/Vendor/all`).then((res) => {
                 setIsLoading(false)
                 setAllVendors(res.data)
             }).catch(() => {
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
     const statusHandler = (username, status) => {
         setAlert({ status: true, type: "primary", msg: "Processing..." })
         setTimeout(() => {
-            axios.put(`https://letsprint-spring.herokuapp.com/users/username/${username}/status/${!status}`).then((res) => {
+            axios.put(`https://letsprint-backend.onrender.com/users/username/${username}/status/${!status}`).then((res) => {
                 if (res.data.status) {
                     setAlert({ status: true, type: "success", msg: "User Updated Successfully" });
                 }

@@ -82,7 +82,7 @@ const Register = () => {
             const formData = new FormData();
             formData.append("file", selectedFile);
             axios
-              .post(`https://letsprint-spring.herokuapp.com/files`, formData)
+              .post(`https://letsprint-backend.onrender.com/files`, formData)
               .then((res) => {
                 if (res.data.status === true) {
                   setFileDetails({
@@ -178,7 +178,7 @@ const Register = () => {
     });
     axios
       .get(
-        `https://letsprint-spring.herokuapp.com/users/username/${loginDetails.username}`
+        `https://letsprint-backend.onrender.com/users/username/${loginDetails.username}`
       )
       .then((res) => {
         if (res.data.username === loginDetails.username) {
@@ -206,7 +206,7 @@ const Register = () => {
 
   const onRegisterHandler = () => {
     axios
-      .post(`https://letsprint-spring.herokuapp.com/users/`, loginDetails)
+      .post(`https://letsprint-backend.onrender.com/users/`, loginDetails)
       .then((res) => {
         if (res.data.status === true) {
           setAlert({
